@@ -1,6 +1,10 @@
 FROM node:8-stretch
 
 RUN perl -i -ne '/^\s*deb-src/ && next; s/(^\s*deb)(\s.+)/"$1$2\n$1-src$2\n"/e; print' /etc/apt/sources.list /etc/apt/sources.list.d/*
+
+ENV http_proxy=http://172.17.0.1:3128
+ENV https_proxy=http://172.17.0.1:3128
+
 RUN apt-get update
 
 RUN : \
