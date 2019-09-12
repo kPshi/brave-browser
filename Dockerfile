@@ -50,7 +50,10 @@ RUN : \
   && apt-get clean all \
   && :
 
-RUN npm install -g node-gyp@3.3.1
+RUN : \
+  && npm install -g minimatch@3.0.2 \
+  && npm install -g node-gyp@3.3.1 \
+  && :
 RUN pip install Jinja2==2.8.1
 
 RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
