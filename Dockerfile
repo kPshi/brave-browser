@@ -20,30 +20,35 @@ RUN : \
           gobjc-6 \
           libgphobos-6-dev \
           lsb-release \
+          bison \
+          curl \
+          git \
+          gperf \
+          libgnome-keyring-dev \
+          libnotify-dev \
+          libssl-dev \
+          lsb-release \
+          ninja-build \
+          python-pip \
+          sudo \
+  && apt-get clean all \
   && :
 
-RUN apt-get source -b gcc-multilib
-RUN dpkg -i *.deb
-RUN rm *.deb
-RUN apt-get install -y -f
-RUN apt-get source -b g++-multilib
-RUN dpkg -i *.deb
-RUN rm *.deb
-RUN apt-get install -y -f
+RUN : \
+  && apt-get source -b gcc-multilib \
+  && dpkg -i *.deb \
+  && rm *.deb \
+  && apt-get install -y -f \
+  && apt-get clean all \
+  && :
 
-RUN apt-get install -y \
-  bison \
-  build-essential \
-  curl \
-  git \
-  gperf \
-  libgnome-keyring-dev \
-  libnotify-dev \
-  libssl-dev \
-  lsb-release \
-  ninja-build \
-  python-pip \
-  sudo
+RUN : \
+  && apt-get source -b g++-multilib \
+  && dpkg -i *.deb \
+  && rm *.deb \
+  && apt-get install -y -f \
+  && apt-get clean all \
+  && :
 
 RUN npm install -g node-gyp@3.3.1
 RUN pip install Jinja2==2.8.1
