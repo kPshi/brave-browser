@@ -68,4 +68,4 @@ VOLUME /src
 # Build cache. Mount ./sccache from the host to here.
 VOLUME /root/.cache/sccache
 
-CMD bash
+ENTRYPOINT /bin/bash
