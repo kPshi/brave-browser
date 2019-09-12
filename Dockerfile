@@ -4,6 +4,7 @@ RUN perl -i -ne '/^\s*deb-src/ && next; s/(^\s*deb)(\s.+)/"$1$2\n$1-src$2\n"/e; 
 RUN apt-get update
 
 RUN : \
+  && apt-get install -y apt-utils \
   && apt-get install -y \
           build-essential:native \
           debhelper \
